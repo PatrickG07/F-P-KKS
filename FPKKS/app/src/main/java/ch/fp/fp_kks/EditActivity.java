@@ -70,7 +70,9 @@ public class EditActivity extends AppCompatActivity {
         Cursor data = mDatabaseHelper.getData();
         ArrayList<String> listData1 = new ArrayList<>();
         while (data.moveToNext()) {
-            listData1.add(data.getString(1));
+
+            String Text = data.getString(1) +"    "+ data.getString(2);
+            listData1.add(Text);
         }
         ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData1);
         LVSaves.setAdapter(adapter);
