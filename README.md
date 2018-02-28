@@ -1,2 +1,2 @@
-# F-P-KKS
-Datei Kärtchen System
+# F&P-KKS
+Katei Kärtchen System
