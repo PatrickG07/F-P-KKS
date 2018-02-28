@@ -17,7 +17,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String TABLE_NAME = "Notes";
     private static final String COL1 = "ID";
-    private static final String COL2 = "note";
+    private static final String COL2 = "Text1";
+    private static final String COL3 = "Text2";
 
     Cursor data;
 
@@ -36,7 +37,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTable = "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL2 + " TEXT)";
+                COL2 + " TEXT " + COL3 +" TEXT)";
         db.execSQL(createTable);
     }
 
@@ -49,21 +50,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        db.execSQL("DROP IF TABLE EXISTS " + TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
 
     /**
      * wriths data in the database
      *
-     * @param item;
+     * @param item1;
+     * @param item2;
      */
-    public boolean addData(String item) {
+    public boolean addData(String item1, String item2) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL2, item);
+        contentValues.put(COL2, item1);
+        contentValues.put(COL3, item2);
 
-        Log.d(TAG, "addData: Adding " + item + " to " + TABLE_NAME);
+        Log.d(TAG, "addData: Adding " + item1 + " and " + item2 +" to " + TABLE_NAME);
 
         long result = db.insert(TABLE_NAME, null, contentValues);
 
@@ -89,9 +92,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * gives the data with a specific id back
      *
      */
-    public Cursor getData2() {
+    public Cursor getDataQuestion() {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE_NAME + " WHERE ID = " + Background.ids;
+        String query = "SELECT " + COL2 +" FROM " + TABLE_NAME + " WHERE ID = " + Background.ids;
         data = db.rawQuery(query, null);
         return data;
     }
@@ -100,13 +103,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * gets the id with a specific text back
      *
      */
-    public Cursor getData3() {
+    public Cursor getDataAnswer() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor data = db.rawQuery("SELECT ID FROM " + TABLE_NAME + " WHERE TRIM(" + COL2 + ") = '" + Background.text.trim() + "'", null);
-        if(data != null) {
-            data.moveToFirst();
-        }
-        Background.ids = data.getInt(0);
+        String query = "SELECT " + COL3 +" FROM " + TABLE_NAME + " WHERE ID = " + Background.ids;
+        data = db.rawQuery(query, null);
         return data;
     }
 
