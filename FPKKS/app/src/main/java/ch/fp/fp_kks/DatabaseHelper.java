@@ -15,7 +15,7 @@ import android.util.Log;
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TAG = "DatabaseHelper";
 
-    private static final String TABLE_NAME = "Notes";
+    private static final String TABLE_NAME = "PGKKS";
     private static final String COL1 = "ID";
     private static final String COL2 = "Text1";
     private static final String COL3 = "Text2";
