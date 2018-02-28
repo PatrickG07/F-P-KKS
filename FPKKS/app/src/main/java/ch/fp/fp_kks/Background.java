@@ -15,7 +15,8 @@ import android.widget.Toast;
 public class Background extends Service {
 
     static int ids;
-    static String text;
+    static String text1;
+    static String text2;
 
     /**
      * @param intent;

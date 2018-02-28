@@ -118,7 +118,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void getUpdate() {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(COL2, Background.text);
+        cv.put(COL2, Background.text1);
+        cv.put(COL3, Background.text2);
         db.update(TABLE_NAME, cv, "" + COL1 + "=" + Background.ids, null);
         db.close();
     }

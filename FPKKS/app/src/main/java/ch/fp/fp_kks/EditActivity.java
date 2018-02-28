@@ -8,10 +8,14 @@ import android.widget.Button;
 
 public class EditActivity extends AppCompatActivity {
 
+    DatabaseHelper mDatabaseHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
+
+        mDatabaseHelper = new DatabaseHelper(this);
 
         Button btnBack = (Button) findViewById(R.id.btnBack);
         Button btnEdit = (Button) findViewById(R.id.btnEdit);
@@ -28,7 +32,7 @@ public class EditActivity extends AppCompatActivity {
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //mDatabaseHelper.getUpdate();
             }
         });
 
@@ -36,6 +40,7 @@ public class EditActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                //mDatabaseHelper.deleteDate();
             }
         });
     }
