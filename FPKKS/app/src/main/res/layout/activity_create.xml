@@ -32,29 +32,25 @@
         android:id="@+id/tvText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:text="Frage"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/tvText2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteY="103dp" />
 
     <EditText
         android:id="@+id/tvText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:text="Antwort"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/btnNew"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvText1" />
+        tools:layout_editor_absoluteY="204dp" />
 </android.support.constraint.ConstraintLayout>
