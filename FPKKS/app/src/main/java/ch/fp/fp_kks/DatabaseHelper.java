@@ -110,6 +110,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
+    public  Cursor getDataForDelete() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor data = db.rawQuery("SELECT ID FROM " + TABLE_NAME + " WHERE TRIM(" + COL2 + ") = '" + Background.text1.trim() + "'", null);
+        if(data != null) {
+            data.moveToFirst();
+        }
+        Background.ids = data.getInt(0);
+        return data;
+    }
+
     /**
      * update a row with the new text
      *
