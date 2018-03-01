@@ -13,7 +13,7 @@
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
@@ -24,24 +24,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-        android:layout_marginEnd="156dp"
+        android:background="#5a0d0d"
         android:text="Edit"
-        android:background="#5a0d0d"
         android:textColor="#fff"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnDelete" />
-
-    <Button
-        android:id="@+id/btnDelete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:layout_marginEnd="16dp"
-        android:text="Delete"
-        android:background="#5a0d0d"
-        android:textColor="#fff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        tools:layout_editor_absoluteX="148dp" />
 
     <ListView
         android:id="@+id/lvAncer"
@@ -75,7 +62,16 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         app:srcCompat="?attr/homeAsUpIndicator"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="80dp" />
+        tools:layout_editor_absoluteX="59dp"
+        tools:layout_editor_absoluteY="439dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:srcCompat="@android:drawable/ic_menu_delete"
+        tools:layout_editor_absoluteX="285dp"
+        tools:layout_editor_absoluteY="439dp" />
 
 </android.support.constraint.ConstraintLayout>
