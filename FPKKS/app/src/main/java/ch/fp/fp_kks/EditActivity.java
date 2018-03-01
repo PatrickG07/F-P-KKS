@@ -10,10 +10,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class EditActivity extends AppCompatActivity {
+public class EditActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     DatabaseHelper mDatabaseHelper;
     private ListView LVSaves;
@@ -28,8 +31,6 @@ public class EditActivity extends AppCompatActivity {
         Button btnBack = (Button) findViewById(R.id.btnBack);
         Button btnEdit = (Button) findViewById(R.id.btnEdit);
         Button btnDelete = (Button) findViewById(R.id.btnDelete);
-
-        LVSaves = (ListView) findViewById(R.id.listView);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,12 +55,36 @@ public class EditActivity extends AppCompatActivity {
             }
         });
 
+        LVSaves = (ListView) findViewById(R.id.listView);
+
         LVSaves.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Background.text1 = (LVSaves.getItemAtPosition(position).toString().trim());
                 mDatabaseHelper.getDataForDelete();
             }
         });
+
+        Spinner spinner = (Spinner) findViewById(R.id.sSpinner);
+
+        // Spinner click listener
+        spinner.setOnItemSelectedListener(this);
+
+        // Spinner Drop down elements
+        List<String> categories = new ArrayList<String>();
+        categories.add("Item7");
+        categories.add("Item8");
+        categories.add("Item9");
+        categories.add("Item10");
+        categories.add("Item11");
+        categories.add("Item12");
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        spinner.setAdapter(dataAdapter);
 
         populateListView();
     }
@@ -85,5 +110,17 @@ public class EditActivity extends AppCompatActivity {
         mDatabaseHelper.deleteDate();
         Background.ids = 0;
         populateListView();
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        // On selecting a spinner item
+        String item = parent.getItemAtPosition(position).toString();
+
+        // Showing selected spinner item
+        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+    }
+    public void onNothingSelected(AdapterView<?> arg0) {
+        // TODO Auto-generated method stub
     }
 }
