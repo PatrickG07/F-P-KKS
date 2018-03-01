@@ -151,13 +151,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /**
      * update a row with the new text
      *
-     * does not work correct
      */
-    public void getUpdate() {
+    public void getUpdate(String text1, String text2) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(COL12, Background.text1);
-        cv.put(COL13, Background.text2);
+        cv.put(COL12, text1);
+        cv.put(COL13, text2);
         db.update(TABLE_NAME1, cv, "" + COL11 + "=" + Background.ids, null);
         db.close();
     }

@@ -92,7 +92,7 @@ public class EditActivity extends AppCompatActivity implements AdapterView.OnIte
      * for showing all database enetys
      */
     private void populateListView() {
-        Cursor data = mDatabaseHelper.getData();
+        Cursor data = mDatabaseHelper.getData(5);
         ArrayList<String> listData1 = new ArrayList<>();
         while (data.moveToNext()) {
 
@@ -107,7 +107,7 @@ public class EditActivity extends AppCompatActivity implements AdapterView.OnIte
      * for deleting the selected row in the database
      */
     private void onDelete() {
-        mDatabaseHelper.deleteDate();
+        mDatabaseHelper.deleteDate(5);
         Background.ids = 0;
         populateListView();
     }

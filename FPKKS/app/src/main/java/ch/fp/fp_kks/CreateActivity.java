@@ -1,6 +1,7 @@
 package ch.fp.fp_kks;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -33,10 +34,10 @@ public class CreateActivity extends AppCompatActivity implements AdapterView.OnI
         tvText1 = (EditText) findViewById(R.id.tvText1);
         tvText2 = (EditText) findViewById(R.id.tvText2);
 
-        Button btnBack = (Button) findViewById(R.id.btnBack);
+        FloatingActionButton fabBack = (FloatingActionButton) findViewById(R.id.fabBack);
         Button btnNew = (Button) findViewById(R.id.btnNew);
 
-        btnBack.setOnClickListener(new View.OnClickListener() {
+        fabBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CreateActivity.this, MainActivity.class);
