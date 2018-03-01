@@ -28,33 +28,9 @@ public class EditActivity extends AppCompatActivity implements AdapterView.OnIte
 
         mDatabaseHelper = new DatabaseHelper(this);
 
-        Spinner spinner = (Spinner) findViewById(R.id.sSpinner);
-
-        // Spinner click listener
-        spinner.setOnItemSelectedListener(this);
-
-        // Spinner Drop down elements
-        List<String> categories = new ArrayList<String>();
-        Cursor data = mDatabaseHelper.getData();
-        ArrayList<String> listData1 = new ArrayList<>();
-        while (data.moveToNext()) {
-            String Text = data.getString(1) +"    "+ data.getString(2);
-            listData1.add(Text);
-        }
-
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
-
-        // Drop down layout style - list view with radio button
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        // attaching data adapter to spinner
-        spinner.setAdapter(dataAdapter);
-
         Button btnBack = (Button) findViewById(R.id.btnBack);
         Button btnEdit = (Button) findViewById(R.id.btnEdit);
         Button btnDelete = (Button) findViewById(R.id.btnDelete);
-
-        LVSaves = (ListView) findViewById(R.id.listView);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,12 +55,36 @@ public class EditActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
 
+        LVSaves = (ListView) findViewById(R.id.listView);
+
         LVSaves.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Background.text1 = (LVSaves.getItemAtPosition(position).toString().trim());
                 mDatabaseHelper.getDataForDelete();
             }
         });
+
+        Spinner spinner = (Spinner) findViewById(R.id.sSpinner);
+
+        // Spinner click listener
+        spinner.setOnItemSelectedListener(this);
+
+        // Spinner Drop down elements
+        List<String> categories = new ArrayList<String>();
+        categories.add("Item7");
+        categories.add("Item8");
+        categories.add("Item9");
+        categories.add("Item10");
+        categories.add("Item11");
+        categories.add("Item12");
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        spinner.setAdapter(dataAdapter);
 
         populateListView();
     }

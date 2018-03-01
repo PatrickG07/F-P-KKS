@@ -4,11 +4,18 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class CreateActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class CreateActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     EditText tvText1;
     EditText tvText2;
@@ -23,11 +30,11 @@ public class CreateActivity extends AppCompatActivity {
 
         mDatabaseHelper = new DatabaseHelper(this);
 
-        Button btnBack = (Button) findViewById(R.id.btnBack);
-        Button btnNew = (Button) findViewById(R.id.btnNew);
-
         tvText1 = (EditText) findViewById(R.id.tvText1);
         tvText2 = (EditText) findViewById(R.id.tvText2);
+
+        Button btnBack = (Button) findViewById(R.id.btnBack);
+        Button btnNew = (Button) findViewById(R.id.btnNew);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,5 +52,40 @@ public class CreateActivity extends AppCompatActivity {
                 mDatabaseHelper.addData(newEntry1, newEntry2);
             }
         });
+
+        Spinner spinner = (Spinner) findViewById(R.id.sSpinner);
+
+        // Spinner click listener
+        spinner.setOnItemSelectedListener(this);
+
+        // Spinner Drop down elements
+        List<String> categories = new ArrayList<String>();
+        categories.add("Item1");
+        categories.add("Item2");
+        categories.add("Item3");
+        categories.add("Item4");
+        categories.add("Item5");
+        categories.add("Item6");
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        spinner.setAdapter(dataAdapter);
+
+
+    }
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        // On selecting a spinner item
+        String item = parent.getItemAtPosition(position).toString();
+
+        // Showing selected spinner item
+        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+    }
+    public void onNothingSelected(AdapterView<?> arg0) {
+        // TODO Auto-generated method stub
     }
 }
