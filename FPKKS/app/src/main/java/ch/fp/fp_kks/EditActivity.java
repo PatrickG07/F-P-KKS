@@ -10,10 +10,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class EditActivity extends AppCompatActivity {
+public class EditActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     DatabaseHelper mDatabaseHelper;
     private ListView LVSaves;
@@ -24,6 +27,28 @@ public class EditActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit);
 
         mDatabaseHelper = new DatabaseHelper(this);
+
+        Spinner spinner = (Spinner) findViewById(R.id.sSpinner);
+
+        // Spinner click listener
+        spinner.setOnItemSelectedListener(this);
+
+        // Spinner Drop down elements
+        List<String> categories = new ArrayList<String>();
+        Cursor data = mDatabaseHelper.getData();
+        ArrayList<String> listData1 = new ArrayList<>();
+        while (data.moveToNext()) {
+            String Text = data.getString(1) +"    "+ data.getString(2);
+            listData1.add(Text);
+        }
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        spinner.setAdapter(dataAdapter);
 
         Button btnBack = (Button) findViewById(R.id.btnBack);
         Button btnEdit = (Button) findViewById(R.id.btnEdit);
@@ -85,5 +110,17 @@ public class EditActivity extends AppCompatActivity {
         mDatabaseHelper.deleteDate();
         Background.ids = 0;
         populateListView();
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        // On selecting a spinner item
+        String item = parent.getItemAtPosition(position).toString();
+
+        // Showing selected spinner item
+        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+    }
+    public void onNothingSelected(AdapterView<?> arg0) {
+        // TODO Auto-generated method stub
     }
 }
