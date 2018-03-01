@@ -15,10 +15,15 @@ import android.util.Log;
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TAG = "DatabaseHelper";
 
-    private static final String TABLE_NAME = "PGKKS";
-    private static final String COL1 = "ID";
-    private static final String COL2 = "Text1";
-    private static final String COL3 = "Text2";
+    private static final String TABLE_NAME1 = "FrageAntwort";
+    private static final String COL11 = "ID";
+    private static final String COL12 = "Frage";
+    private static final String COL13 = "Antwort";
+    private static final String COL14 = "KarteienFk";
+
+    private static final String TABLE_NAME2 = "Karteien";
+    private static final String COL21 = "ID";
+    private static final String COL22 = "Karteiname";
 
     Cursor data;
 
@@ -26,7 +31,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * @param context;
      */
     public DatabaseHelper(Context context) {
-        super(context, TABLE_NAME, null, 1);
+        super(context, TABLE_NAME1, null, 1);
     }
 
     /**
@@ -36,8 +41,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTable = "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL2 + " TEXT1, " + COL3 +" TEXT2)";
+        String createTable = "CREATE TABLE " + TABLE_NAME2 + " (ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                COL22 + " TEXT1)";
+        db.execSQL(createTable);
+
+        createTable = "CREATE TABLE " + TABLE_NAME1 + " (ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                COL12 + " TEXT1, " + COL13 + " TEXT1, " + COL14 +" INTEGER, Foreign key(KarteienFk) references Karteien(id))";
         db.execSQL(createTable);
     }
 
@@ -50,7 +59,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME1);
+        onCreate(db);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME2);
         onCreate(db);
     }
 
@@ -58,17 +69,34 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * wriths data in the database
      *
      * @param item1;
-     * @param item2;
      */
-    public boolean addData(String item1, String item2) {
+    public boolean addDataKartei(String item1) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL2, item1);
-        contentValues.put(COL3, item2);
+        contentValues.put(COL12, item1);
 
-        Log.d(TAG, "addData: Adding " + item1 + " and " + item2 +" to " + TABLE_NAME);
+        Log.d(TAG, "addData: Adding " + item1 +" to " + TABLE_NAME2);
 
-        long result = db.insert(TABLE_NAME, null, contentValues);
+        long result = db.insert(TABLE_NAME2, null, contentValues);
+
+        //if date as inserted incorrectly it will return -1
+        if (result == -1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public boolean addData(String item1, String item2, Integer KarteiFk) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL12, item1);
+        contentValues.put(COL13, item2);
+        contentValues.put(COL13, KarteiFk);
+
+        Log.d(TAG, "addData: Adding " + item1 + " and " + item2 + " and " + KarteiFk +" to " + TABLE_NAME1);
+
+        long result = db.insert(TABLE_NAME1, null, contentValues);
 
         //if date as inserted incorrectly it will return -1
         if (result == -1) {
@@ -82,9 +110,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * givs all data from the database back
      *
      */
-    public Cursor getData() {
+    public Cursor getData(Integer KarteienFk) {
         SQLiteDatabase db = this.getWritableDatabase();
-        data = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+        data = db.rawQuery("SELECT Frage, Antwort FROM " + TABLE_NAME1 + " where KarteienFk = "+ KarteienFk, null);
         return data;
     }
 
@@ -92,9 +120,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * gives the data with a specific id back
      *
      */
-    public Cursor getDataQuestion() {
+    public Cursor getDataQuestion(Integer KarteienFk) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT " + COL2 +" FROM " + TABLE_NAME + " WHERE ID = " + Background.ids;
+        String query = "SELECT " + COL12 +" FROM " + TABLE_NAME1 + " WHERE KarteienFk = " + KarteienFk;
         data = db.rawQuery(query, null);
         return data;
     }
@@ -103,16 +131,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * gets the id with a specific text back
      *
      */
-    public Cursor getDataAnswer() {
+    public Cursor getDataAnswer(Integer KarteienFk) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT " + COL3 +" FROM " + TABLE_NAME + " WHERE ID = " + Background.ids;
+        String query = "SELECT " + COL13 +" FROM " + TABLE_NAME1 + " WHERE KarteienFk = " + KarteienFk;
         data = db.rawQuery(query, null);
         return data;
     }
 
     public  Cursor getDataForDelete() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor data = db.rawQuery("SELECT ID FROM " + TABLE_NAME + " WHERE TRIM(" + COL2 + ") = '" + Background.text1.trim() + "'", null);
+        Cursor data = db.rawQuery("SELECT ID FROM " + TABLE_NAME1 + " WHERE TRIM(" + COL12 + ") = '" + Background.text1.trim() + "'", null);
         if(data != null) {
             data.moveToFirst();
         }
@@ -128,18 +156,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void getUpdate() {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(COL2, Background.text1);
-        cv.put(COL3, Background.text2);
-        db.update(TABLE_NAME, cv, "" + COL1 + "=" + Background.ids, null);
+        cv.put(COL12, Background.text1);
+        cv.put(COL13, Background.text2);
+        db.update(TABLE_NAME1, cv, "" + COL11 + "=" + Background.ids, null);
         db.close();
     }
 
     /**
      * deletes data with a specific id
      */
-    public void deleteDate() {
+    public void deleteDate(Integer KarteienFk) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("DELETE FROM " + TABLE_NAME + " WHERE " + COL1 + " = " + Background.ids);
+        db.execSQL("DELETE FROM " + TABLE_NAME1 + " WHERE KarteienFk = " + KarteienFk);
         db.close();
     }
 }

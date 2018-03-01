@@ -42,7 +42,7 @@ public class CreateActivity extends AppCompatActivity {
             public void onClick(View v) {
                 newEntry1 = String.valueOf(tvText1.getText());
                 newEntry2 = String.valueOf(tvText2.getText());
-                mDatabaseHelper.addData(newEntry1, newEntry2);
+                mDatabaseHelper.addData(newEntry1, newEntry2, 1);
             }
         });
     }
