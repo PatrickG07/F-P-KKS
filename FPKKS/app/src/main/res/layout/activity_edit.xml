@@ -44,7 +44,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ListView
-        android:id="@+id/listView"
+        android:id="@+id/lvAncer"
         android:layout_width="266dp"
         android:layout_height="324dp"
         android:layout_marginBottom="36dp"

@@ -22,7 +22,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".EditActivity" />
-        <activity android:name=".CreateActivity" />
         <activity android:name=".PlayActivity" />
         <activity android:name=".Create1" />
         <activity android:name=".Create2"></activity>

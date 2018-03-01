@@ -55,7 +55,7 @@ public class EditActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
 
-        LVSaves = (ListView) findViewById(R.id.listView);
+        LVSaves = (ListView) findViewById(R.id.lvAncer);
 
         LVSaves.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
