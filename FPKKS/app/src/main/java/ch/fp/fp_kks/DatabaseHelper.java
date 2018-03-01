@@ -138,6 +138,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
+    public Cursor getSavedKartei(String Name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT " + COL21 +" FROM " + TABLE_NAME2 + " WHERE Karteiname = " + Name;
+        data = db.rawQuery(query, null);
+        return data;
+    }
+
     public  Cursor getDataForDelete() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor data = db.rawQuery("SELECT ID FROM " + TABLE_NAME1 + " WHERE TRIM(" + COL12 + ") = '" + Background.text1.trim() + "'", null);
@@ -160,6 +167,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.update(TABLE_NAME1, cv, "" + COL11 + "=" + Background.ids, null);
         db.close();
     }
+
 
     /**
      * deletes data with a specific id

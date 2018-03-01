@@ -50,7 +50,7 @@ public class Create2 extends AppCompatActivity {
     }
 
     private void populateListView() {
-        Cursor data1 = mDatabaseHelper.getDataQuestion(5);
+        Cursor data1 = mDatabaseHelper.getDataQuestion(Background.ids);
         ArrayList<String> listData1 = new ArrayList<>();
         while (data1.moveToNext()) {
 
@@ -60,7 +60,7 @@ public class Create2 extends AppCompatActivity {
         ListAdapter adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData1);
         lvQuestion.setAdapter(adapter1);
 
-        Cursor data2 = mDatabaseHelper.getDataAnswer(5);
+        Cursor data2 = mDatabaseHelper.getDataAnswer(Background.ids);
         ArrayList<String> listData2 = new ArrayList<>();
         while (data2.moveToNext()) {
 
