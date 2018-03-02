@@ -76,7 +76,7 @@
         android:clickable="true"
         app:layout_constraintEnd_toStartOf="@+id/floatingActionButton4"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:srcCompat="?attr/actionModeCloseDrawable" />
+        app:srcCompat="@drawable/ic_action_left" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButton2"
@@ -87,7 +87,7 @@
         android:clickable="true"
         app:layout_constraintStart_toEndOf="@+id/floatingActionButton4"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:srcCompat="?attr/actionModeCloseDrawable" />
+        app:srcCompat="@drawable/ic_action_right" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButton4"
