@@ -22,7 +22,7 @@
     <ListView
         android:id="@+id/lvQuestion"
         android:layout_width="123dp"
-        android:layout_height="175dp"
+        android:layout_height="255dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="36dp"
         android:textColor="#fff"
@@ -32,7 +32,7 @@
     <ListView
         android:id="@+id/lvAncer"
         android:layout_width="123dp"
-        android:layout_height="175dp"
+        android:layout_height="255dp"
         android:layout_marginEnd="32dp"
         android:layout_marginTop="36dp"
         android:textColor="#fff"
