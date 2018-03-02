@@ -63,7 +63,6 @@ public class Create2Activity extends AppCompatActivity {
         Cursor data1 = mDatabaseHelper.getDataQuestion(Background.ids);
         ArrayList<String> listData1 = new ArrayList<>();
         while (data1.moveToNext()) {
-
             String Text = data1.getString(1);
             listData1.add(Text);
         }
