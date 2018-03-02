@@ -7,17 +7,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class Create2 extends AppCompatActivity {
+public class Create2Activity extends AppCompatActivity {
+
+    String newEntry1, newEntry2;
 
     DatabaseHelper mDatabaseHelper;
 
     ListView lvQuestion, lvAncer;
+
+    EditText etQuestion, etAncer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,18 +36,24 @@ public class Create2 extends AppCompatActivity {
         lvQuestion = (ListView) findViewById(R.id.lvQuestion);
         lvAncer = (ListView) findViewById(R.id.lvAncer);
 
+        etQuestion = (EditText) findViewById(R.id.etQuestion);
+        etAncer = (EditText) findViewById(R.id.etAncer);
+
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                newEntry1 = String.valueOf(etQuestion.getText());
+                newEntry2 = String.valueOf(etAncer.getText());
 
-                // adding Question and Ancer to Database and show it on top
+                mDatabaseHelper.addData(newEntry1, newEntry2, Background.ids);
+                populateListView();
             }
         });
 
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Create2.this, MainActivity.class);
+                Intent intent = new Intent(Create2Activity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -63,7 +73,6 @@ public class Create2 extends AppCompatActivity {
         Cursor data2 = mDatabaseHelper.getDataAnswer(Background.ids);
         ArrayList<String> listData2 = new ArrayList<>();
         while (data2.moveToNext()) {
-
             String Text = data2.getString(2);
             listData2.add(Text);
         }

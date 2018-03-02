@@ -1,14 +1,13 @@
 package ch.fp.fp_kks;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class Create1 extends AppCompatActivity {
+public class Create1Activity extends AppCompatActivity {
 
     DatabaseHelper mDatabaseHelper;
 
@@ -32,10 +31,14 @@ public class Create1 extends AppCompatActivity {
                 newEntry = String.valueOf(etName.getText());
                 mDatabaseHelper.addDataKartei(newEntry);
 
-                Cursor newEntry2 = mDatabaseHelper.getSavedKartei(newEntry);
-                //Background.ids = newEntry2.moveToLast();
+                System.out.println("Data Insertet");
+                System.out.println("Data = " + newEntry);
 
-                Intent intent = new Intent(Create1.this, Create2.class);
+                mDatabaseHelper.getSavedKartei(newEntry);
+
+                System.out.println("ID = " + Background.ids);
+
+                Intent intent = new Intent(Create1Activity.this, Create2Activity.class);
                 startActivity(intent);
             }
         });

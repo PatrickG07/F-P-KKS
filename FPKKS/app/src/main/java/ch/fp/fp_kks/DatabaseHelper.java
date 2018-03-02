@@ -65,34 +65,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    /**
-     * wriths data in the database
-     *
-     * @param item1;
-     */
-    public boolean addDataKartei(String item1) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COL12, item1);
-
-        Log.d(TAG, "addData: Adding " + item1 +" to " + TABLE_NAME2);
-
-        long result = db.insert(TABLE_NAME2, null, contentValues);
-
-        //if date as inserted incorrectly it will return -1
-        if (result == -1) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    public boolean addData(String item1, String item2, Integer KarteiFk) {
+    public boolean addData(String item1, String item2, int KarteiFk) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL12, item1);
         contentValues.put(COL13, item2);
-        contentValues.put(COL13, KarteiFk);
+        contentValues.put(COL14, KarteiFk);
 
         Log.d(TAG, "addData: Adding " + item1 + " and " + item2 + " and " + KarteiFk +" to " + TABLE_NAME1);
 
@@ -138,16 +116,43 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
-    public Cursor getSavedKartei(String Name) {
+    /**
+     * wriths data in the database
+     *
+     * @param item1;
+     */
+    public boolean addDataKartei(String item1) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT " + COL21 +" FROM " + TABLE_NAME2 + " WHERE Karteiname = " + Name;
-        data = db.rawQuery(query, null);
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL22, item1);
+
+        Log.d(TAG, "addData: Adding " + item1 +" to " + TABLE_NAME2);
+
+        long result = db.insert(TABLE_NAME2, null, contentValues);
+
+        //if date as inserted incorrectly it will return -1
+        if (result == -1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public Cursor getSavedKartei(String Name) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor data = db.rawQuery("SELECT " + COL21 + " FROM " + TABLE_NAME2 + " WHERE " + COL22 + " = '" + Name + "'", null);
+
+        if(data != null) {
+            data.moveToFirst();
+        }
+        Background.ids = data.getInt(0);
         return data;
     }
 
-    public  Cursor getDataForDelete() {
+    public Cursor getDataForDelete() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor data = db.rawQuery("SELECT ID FROM " + TABLE_NAME1 + " WHERE TRIM(" + COL12 + ") = '" + Background.text1.trim() + "'", null);
+        Cursor data = db.rawQuery("SELECT " + COL11 + " FROM " + TABLE_NAME1 + " WHERE TRIM(" + COL12 + ") = '" + Background.text1.trim() + "'", null);
         if(data != null) {
             data.moveToFirst();
         }
