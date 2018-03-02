@@ -24,11 +24,16 @@
         <activity android:name=".EditActivity" />
         <activity android:name=".PlayActivity" />
 <<<<<<< HEAD
+<<<<<<< HEAD
         <activity android:name=".Create1Activity" />
         <activity android:name=".Create2Activity"></activity>
 =======
         <activity android:name=".Create1" />
         <activity android:name=".Create2" />
+=======
+        <activity android:name=".Create1Activity" />
+        <activity android:name=".Create2Activity" />
+>>>>>>> d6effe26b8fef8a236b2998141f32e3ea9a4b913
         <activity android:name=".Play_Game"></activity>
 >>>>>>> 79e5b2a58ea7108ac4f08ded2561f60edb246721
     </application>

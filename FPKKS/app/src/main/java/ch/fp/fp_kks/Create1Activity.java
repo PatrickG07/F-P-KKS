@@ -33,11 +33,9 @@ public class Create1Activity extends AppCompatActivity {
 
                 System.out.println("Data Insertet");
                 System.out.println("Data = " + newEntry);
-
                 mDatabaseHelper.getSavedKartei(newEntry);
 
                 System.out.println("ID = " + Background.ids);
-
                 Intent intent = new Intent(Create1Activity.this, Create2Activity.class);
                 startActivity(intent);
             }
