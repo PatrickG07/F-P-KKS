@@ -11,9 +11,8 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class Create2 extends AppCompatActivity {
+public class Create2Activity extends AppCompatActivity {
 
     DatabaseHelper mDatabaseHelper;
 
@@ -43,7 +42,7 @@ public class Create2 extends AppCompatActivity {
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Create2.this, MainActivity.class);
+                Intent intent = new Intent(Create2Activity.this, MainActivity.class);
                 startActivity(intent);
             }
         });

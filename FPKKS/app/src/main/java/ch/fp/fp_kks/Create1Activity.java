@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class Create1 extends AppCompatActivity {
+public class Create1Activity extends AppCompatActivity {
 
     DatabaseHelper mDatabaseHelper;
 
@@ -35,7 +35,7 @@ public class Create1 extends AppCompatActivity {
                 Cursor newEntry2 = mDatabaseHelper.getSavedKartei(newEntry);
                 //Background.ids = newEntry2.moveToLast();
 
-                Intent intent = new Intent(Create1.this, Create2.class);
+                Intent intent = new Intent(Create1Activity.this, Create2Activity.class);
                 startActivity(intent);
             }
         });
