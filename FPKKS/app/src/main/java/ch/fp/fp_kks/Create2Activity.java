@@ -60,19 +60,18 @@ public class Create2Activity extends AppCompatActivity {
     }
 
     private void populateListView() {
-        Cursor data1 = mDatabaseHelper.getDataQuestion(Background.ids);
+        Cursor data1 = mDatabaseHelper.getData(Background.ids);
         ArrayList<String> listData1 = new ArrayList<>();
         while (data1.moveToNext()) {
-            String Text = data1.getString(1);
+            String Text = data1.getString(0);
             listData1.add(Text);
         }
         ListAdapter adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData1);
         lvQuestion.setAdapter(adapter1);
 
-        Cursor data2 = mDatabaseHelper.getDataAnswer(Background.ids);
         ArrayList<String> listData2 = new ArrayList<>();
-        while (data2.moveToNext()) {
-            String Text = data2.getString(2);
+        while (data1.moveToNext()) {
+            String Text = data1.getString(1);
             listData2.add(Text);
         }
         ListAdapter adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData1);
