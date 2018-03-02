@@ -160,6 +160,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
+    public Cursor getKarteien() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME2, null);
+        return data;
+    }
+
     /**
      * update a row with the new text
      *
@@ -177,9 +183,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /**
      * deletes data with a specific id
      */
-    public void deleteDate(Integer KarteienFk) {
+    public void deleteDate(Integer ID) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("DELETE FROM " + TABLE_NAME1 + " WHERE KarteienFk = " + KarteienFk);
+        db.execSQL("DELETE FROM " + TABLE_NAME1 + " WHERE " + COL11 + " = " + ID);
         db.close();
     }
 }
