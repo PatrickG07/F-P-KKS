@@ -44,18 +44,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="34dp"
-        android:layout_marginTop="24dp"
-        android:clickable="true"
-        app:layout_constraintStart_toEndOf="@+id/btnBack"
-        app:layout_constraintTop_toBottomOf="@+id/lvAncer"
-        app:srcCompat="@drawable/ic_action_edit" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/btnBack"
+        android:id="@+id/fabBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
@@ -66,7 +55,29 @@
         app:srcCompat="@drawable/ic_action_left" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/btnDelete"
+        android:id="@+id/fabAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="24dp"
+        android:clickable="true"
+        app:layout_constraintStart_toEndOf="@+id/fabBack"
+        app:layout_constraintTop_toBottomOf="@+id/lvAncer"
+        app:srcCompat="@drawable/ic_action_edit" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="34dp"
+        android:layout_marginTop="24dp"
+        android:clickable="true"
+        app:layout_constraintEnd_toStartOf="@+id/fabDelete"
+        app:layout_constraintTop_toBottomOf="@+id/lvAncer"
+        app:srcCompat="@drawable/ic_action_name" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="56dp"
@@ -75,16 +86,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lvAncer"
         app:srcCompat="@android:drawable/ic_menu_delete" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="34dp"
-        android:layout_marginTop="24dp"
-        android:clickable="true"
-        app:layout_constraintEnd_toStartOf="@+id/btnDelete"
-        app:layout_constraintTop_toBottomOf="@+id/lvAncer"
-        app:srcCompat="@drawable/ic_action_name" />
 
 </android.support.constraint.ConstraintLayout>

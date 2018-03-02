@@ -20,11 +20,12 @@ import java.util.List;
 public class EditActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     DatabaseHelper mDatabaseHelper;
+
     private ListView LVSaves;
 
-    Spinner spinner;
+    private Spinner spinner;
 
-    ArrayAdapter<String> dataAdapter;
+    private ArrayAdapter<String> dataAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +34,12 @@ public class EditActivity extends AppCompatActivity implements AdapterView.OnIte
 
         mDatabaseHelper = new DatabaseHelper(this);
 
-        FloatingActionButton btnBack = (FloatingActionButton) findViewById(R.id.btnBack);
-        Button btnEdit = (Button) findViewById(R.id.btnEdit);
-        FloatingActionButton btnDelete = (FloatingActionButton) findViewById(R.id.btnDelete);
+        FloatingActionButton fabBack = (FloatingActionButton) findViewById(R.id.fabBack);
+        FloatingActionButton fabEdit = (FloatingActionButton) findViewById(R.id.fabEdit);
+        FloatingActionButton fabAdd = (FloatingActionButton) findViewById(R.id.fabAdd);
+        FloatingActionButton fabDelete = (FloatingActionButton) findViewById(R.id.fabDelete);
 
-        btnBack.setOnClickListener(new View.OnClickListener() {
+        fabBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(EditActivity.this, MainActivity.class);
@@ -45,7 +47,7 @@ public class EditActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
 
-        btnEdit.setOnClickListener(new View.OnClickListener() {
+        fabEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(EditActivity.this, EditTextActivity.class);
@@ -53,10 +55,17 @@ public class EditActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
 
-        btnDelete.setOnClickListener(new View.OnClickListener() {
+        fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(EditActivity.this, Create2Activity.class);
+                startActivity(intent);
+            }
+        });
 
+        fabDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 onDelete();
             }
         });
@@ -98,7 +107,6 @@ public class EditActivity extends AppCompatActivity implements AdapterView.OnIte
      * for showing all database enetys
      */
     private void populateListView() {
-
         mDatabaseHelper.getSavedKartei(spinner.getSelectedItem().toString());
         Cursor data = mDatabaseHelper.getData(Background.ids);
         ArrayList<String> listData1 = new ArrayList<>();

@@ -88,6 +88,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * givs all data from the database back
      *
      */
+    public Cursor getEditData(Integer ID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        data = db.rawQuery("SELECT * FROM " + TABLE_NAME1 + " where " + COL11 + " = " + ID, null);
+        return data;
+    }
+
     public Cursor getData(Integer KarteienFk) {
         SQLiteDatabase db = this.getWritableDatabase();
         data = db.rawQuery("SELECT Frage, Antwort FROM " + TABLE_NAME1 + " where KarteienFk = "+ KarteienFk, null);
@@ -170,12 +176,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * update a row with the new text
      *
      */
-    public void getUpdate(String text1, String text2) {
+    public void getUpdate(String text1, String text2, Integer ID) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COL12, text1);
         cv.put(COL13, text2);
-        db.update(TABLE_NAME1, cv, "" + COL11 + "=" + Background.ids, null);
+        db.update(TABLE_NAME1, cv, "" + COL11 + "=" + ID, null);
         db.close();
     }
 
