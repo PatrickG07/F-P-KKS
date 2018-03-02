@@ -35,7 +35,7 @@ public class PlayActivity extends AppCompatActivity implements AdapterView.OnIte
 
         // Spinner Drop down elements
         List<String> categories = new ArrayList<String>();
-        categories.add("Item7");
+        categories.add("Chose your category");
         categories.add("Item8");
         categories.add("Item9");
         categories.add("Item10");
