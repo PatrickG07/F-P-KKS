@@ -17,7 +17,7 @@ public class PlayActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_play);
+        setContentView(R.layout.activity_play_chouse);
 
         Button btnPlay = (Button) findViewById(R.id.btnPlay);
 
