@@ -29,7 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/Karte" />
+        app:srcCompat="@drawable/karte" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -41,7 +41,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:srcCompat="@drawable/Karte" />
+        app:srcCompat="@drawable/karte" />
 
     <TextView
         android:id="@+id/textView3"
@@ -96,7 +96,7 @@
         android:layout_marginTop="28dp"
         android:clickable="true"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:srcCompat="@drawable/ic_action_OK"
+        app:srcCompat="@drawable/ic_action_ok"
         tools:layout_editor_absoluteX="172dp" />
 
 </android.support.constraint.ConstraintLayout>
