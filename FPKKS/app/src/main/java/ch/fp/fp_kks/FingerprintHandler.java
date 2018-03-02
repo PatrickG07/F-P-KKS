@@ -14,7 +14,7 @@ import android.widget.Toast;
  * Created by garte on 26.02.2018.
  */
 
-class FingerprintHandler extends FingerprintManager.AuthenticationCallback{
+public class FingerprintHandler extends FingerprintManager.AuthenticationCallback{
 
     private Context context;
 

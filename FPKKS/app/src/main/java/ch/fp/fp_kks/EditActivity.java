@@ -48,7 +48,8 @@ public class EditActivity extends AppCompatActivity implements AdapterView.OnIte
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //mDatabaseHelper.getUpdate();
+                Intent intent = new Intent(EditActivity.this, EditTextActivity.class);
+                startActivity(intent);
             }
         });
 

@@ -24,9 +24,9 @@
         <activity android:name=".EditActivity" />
         <activity android:name=".PlayActivity" />
         <activity android:name=".Create1Activity" />
-        <activity android:name=".Create2Activity"/>
-        <activity android:name=".Play_Game" >
-        </activity>
+        <activity android:name=".Create2Activity" />
+        <activity android:name=".Play_Game"></activity>
+        <activity android:name=".EditTextActivity"></activity>
     </application>
 
 </manifest>
