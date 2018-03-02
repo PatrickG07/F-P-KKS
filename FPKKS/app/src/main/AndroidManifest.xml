@@ -25,8 +25,9 @@
         <activity android:name=".PlayActivity" />
         <activity android:name=".Create1Activity" />
         <activity android:name=".Create2Activity" />
-        <activity android:name=".Play_Game"></activity>
-        <activity android:name=".EditTextActivity"></activity>
+        <activity android:name=".PlayGame" />
+        <activity android:name=".EditTextActivity" />
+        <activity android:name=".PlayScore"></activity>
     </application>
 
 </manifest>
