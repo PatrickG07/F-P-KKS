@@ -1,51 +1,72 @@
 package ch.fp.fp_kks;
 
 import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.Toast;
 
-import org.w3c.dom.Text;
+import java.util.ArrayList;
+import java.util.List;
 
-public class PlayChouseActivity extends AppCompatActivity {
+public class PlayChouseActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
-    TextView tvQuestion;
+    DatabaseHelper mDatabaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_play__game);
+        setContentView(R.layout.activity_play_chouse);
 
-        FloatingActionButton fabBack = (FloatingActionButton) findViewById(R.id.fabBack);
-        FloatingActionButton fabDone = (FloatingActionButton) findViewById(R.id.fabDone);
-        FloatingActionButton fabNext = (FloatingActionButton) findViewById(R.id.fabNext);
+        mDatabaseHelper = new DatabaseHelper(this);
 
-        tvQuestion = (TextView) findViewById(R.id.tvQuestion);
+        Button btnPlay = (Button) findViewById(R.id.btnPlay);
 
-        EditText etAncer = (EditText) findViewById(R.id.etAncer);
-
-        fabBack.setOnClickListener(new View.OnClickListener() {
+        btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(PlayChouseActivity.this, PlayGameActivity.class);
+                startActivity(intent);
             }
         });
 
-        fabDone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        Spinner spinner = (Spinner) findViewById(R.id.sSpinner);
 
-            }
-        });
+        // Spinner click listener
+        spinner.setOnItemSelectedListener(this);
 
-        fabNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        // Spinner Drop down elements
+        List<String> categories = new ArrayList<String>();
 
-            }
-        });
+        Cursor data = mDatabaseHelper.getKarteien();
+        while (data.moveToNext()) {
+            String Text = data.getString(1);
+            categories.add(Text);
+        }
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        spinner.setAdapter(dataAdapter);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        // On selecting a spinner item
+        String item = parent.getItemAtPosition(position).toString();
+
+        // Showing selected spinner item
+        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+    }
+    public void onNothingSelected(AdapterView<?> arg0) {
+        // TODO Auto-generated method stub
     }
 }

@@ -22,10 +22,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".EditActivity" />
-        <activity android:name=".PlayGameActivity" />
+        <activity android:name=".PlayChouseActivity" />
         <activity android:name=".Create1Activity" />
         <activity android:name=".Create2Activity" />
-        <activity android:name=".PlayChouseActivity" />
+        <activity android:name=".PlayGameActivity" />
         <activity android:name=".EditTextActivity" />
         <activity android:name=".PlayScoreActivity"></activity>
     </application>
