@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context="ch.fp.fp_kks.PlayActivity">
+    tools:context="ch.fp.fp_kks.PlayGameActivity">
 
     <ImageView
         android:id="@+id/imageView5"

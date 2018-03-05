@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_play) {
-            Intent intent = new Intent(MainActivity.this, PlayActivity.class);
+            Intent intent = new Intent(MainActivity.this, PlayGameActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_create) {
             Intent intent = new Intent(MainActivity.this, Create1Activity.class);
