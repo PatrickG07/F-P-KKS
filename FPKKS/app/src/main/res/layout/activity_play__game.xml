@@ -104,7 +104,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
         android:layout_marginTop="28dp"
-        android:clickable="true"
+        android:clickable="false"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
         app:srcCompat="@drawable/ic_action_left" />
@@ -116,7 +117,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="28dp"
-        android:clickable="true"
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/fabNext"
         app:layout_constraintStart_toEndOf="@+id/fabPrevius"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"

@@ -76,9 +76,6 @@ public class EditActivity extends AppCompatActivity implements AdapterView.OnIte
 
         LVSaves.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                System.out.println(Background.ids);
-                System.out.println(LVSaves.getItemAtPosition(position).toString().trim());
                 mDatabaseHelper.getDataForDelete(LVSaves.getItemAtPosition(position).toString().trim());
             }
         });
@@ -115,7 +112,7 @@ public class EditActivity extends AppCompatActivity implements AdapterView.OnIte
         Cursor data = mDatabaseHelper.getData(Background.ids);
         ArrayList<String> listData1 = new ArrayList<>();
         while (data.moveToNext()) {
-            String Text = data.getString(1);
+            String Text = data.getString(0);
             listData1.add(Text);
         }
         ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData1);
