@@ -1,5 +1,6 @@
 package ch.fp.fp_kks;
 
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,10 +15,14 @@ import java.util.List;
 
 public class PlayGameActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
+    DatabaseHelper mDatabaseHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_chouse);
+
+        mDatabaseHelper = new DatabaseHelper(this);
 
         Button btnPlay = (Button) findViewById(R.id.btnPlay);
 
@@ -35,12 +40,12 @@ public class PlayGameActivity extends AppCompatActivity implements AdapterView.O
 
         // Spinner Drop down elements
         List<String> categories = new ArrayList<String>();
-        categories.add("Chose your category");
-        categories.add("Item8");
-        categories.add("Item9");
-        categories.add("Item10");
-        categories.add("Item11");
-        categories.add("Item12");
+
+        Cursor data = mDatabaseHelper.getKarteien();
+        while (data.moveToNext()) {
+            String Text = data.getString(1);
+            categories.add(Text);
+        }
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
 

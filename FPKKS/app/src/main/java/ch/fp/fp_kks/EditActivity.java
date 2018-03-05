@@ -91,7 +91,7 @@ public class EditActivity extends AppCompatActivity implements AdapterView.OnIte
         // Spinner Drop down elements
         List<String> categories = new ArrayList<String>();
 
-        Cursor data = mDatabaseHelper.getKarteien();//Background.ids);
+        Cursor data = mDatabaseHelper.getKarteien();
         while (data.moveToNext()) {
             String Text = data.getString(1);
             categories.add(Text);
@@ -131,6 +131,14 @@ public class EditActivity extends AppCompatActivity implements AdapterView.OnIte
         populateListView();
     }
 
+    /**
+     * for Selecting an item in the Spinner
+     *
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     */
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         // On selecting a spinner item
@@ -141,6 +149,12 @@ public class EditActivity extends AppCompatActivity implements AdapterView.OnIte
 
         populateListView();
     }
+
+    /**
+     * in no item is Selected in Spinner
+     *
+     * @param arg0
+     */
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub
     }
