@@ -3,7 +3,7 @@ package ch.fp.fp_kks;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class PlayScore extends AppCompatActivity {
+public class PlayScoreActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
