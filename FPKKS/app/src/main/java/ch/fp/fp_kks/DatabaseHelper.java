@@ -101,28 +101,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * gives the data with a specific id back
-     *
-     */
-    public Cursor getDataQuestion(Integer KarteienFk) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT " + COL12 +" FROM " + TABLE_NAME1 + " WHERE KarteienFk = " + KarteienFk;
-        data = db.rawQuery(query, null);
-        return data;
-    }
-
-    /**
-     * gets the id with a specific text back
-     *
-     */
-    public Cursor getDataAnswer(Integer KarteienFk) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT " + COL13 +" FROM " + TABLE_NAME1 + " WHERE KarteienFk = " + KarteienFk;
-        data = db.rawQuery(query, null);
-        return data;
-    }
-
-    /**
      * wriths data in the database
      *
      * @param item1;
