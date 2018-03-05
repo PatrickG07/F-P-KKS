@@ -156,9 +156,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
-    public Cursor getDataForDelete() {
+    public Cursor getDataForDelete(String text) {
+        System.out.println(text);
+
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor data = db.rawQuery("SELECT " + COL11 + " FROM " + TABLE_NAME1 + " WHERE TRIM(" + COL12 + ") = '" + Background.text1.trim() + "'", null);
+        Cursor data = db.rawQuery("SELECT " + COL11 + " FROM " + TABLE_NAME1 + " WHERE " + COL12 + " = '" + text + "'", null);
         if(data != null) {
             data.moveToFirst();
         }

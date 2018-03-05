@@ -53,28 +53,34 @@ public class Create2Activity extends AppCompatActivity {
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Create2Activity.this, MainActivity.class);
-                startActivity(intent);
+                System.out.println(Background.text2);
+                if(!Background.text2) {
+                    Intent intent = new Intent(Create2Activity.this, MainActivity.class);
+                    startActivity(intent);
+                }else if(Background.text2){
+                    Intent intent = new Intent(Create2Activity.this, EditActivity.class);
+                    startActivity(intent);
+                }
             }
         });
+
+        populateListView();
     }
 
     private void populateListView() {
         Cursor data1 = mDatabaseHelper.getData(Background.ids);
         ArrayList<String> listData1 = new ArrayList<>();
+        ArrayList<String> listData2 = new ArrayList<>();
         while (data1.moveToNext()) {
             String Text = data1.getString(0);
             listData1.add(Text);
+            Text = data1.getString(1);
+            listData2.add(Text);
         }
         ListAdapter adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData1);
         lvQuestion.setAdapter(adapter1);
 
-        ArrayList<String> listData2 = new ArrayList<>();
-        while (data1.moveToNext()) {
-            String Text = data1.getString(1);
-            listData2.add(Text);
-        }
-        ListAdapter adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData1);
+        ListAdapter adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData2);
         lvAncer.setAdapter(adapter2);
     }
 }

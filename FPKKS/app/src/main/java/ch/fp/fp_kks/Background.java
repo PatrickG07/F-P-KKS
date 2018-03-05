@@ -16,6 +16,7 @@ public class Background extends Service {
 
     static int ids = 1;
     static String text1;
+    static Boolean text2 = false;
 
     /**
      * @param intent;

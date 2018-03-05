@@ -37,7 +37,7 @@ public class EditTextActivity extends AppCompatActivity {
 
                 mDatabaseHelper.getUpdate(newEntry1, newEntry1, Background.ids);
 
-                Intent intent = new Intent(EditTextActivity.this, MainActivity.class);
+                Intent intent = new Intent(EditTextActivity.this, EditActivity.class);
                 startActivity(intent);
             }
         });

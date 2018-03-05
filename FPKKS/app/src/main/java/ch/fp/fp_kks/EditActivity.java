@@ -58,6 +58,8 @@ public class EditActivity extends AppCompatActivity implements AdapterView.OnIte
         fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Background.text2 = true;
+
                 Intent intent = new Intent(EditActivity.this, Create2Activity.class);
                 startActivity(intent);
             }
@@ -74,8 +76,10 @@ public class EditActivity extends AppCompatActivity implements AdapterView.OnIte
 
         LVSaves.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Background.text1 = (LVSaves.getItemAtPosition(position).toString().trim());
-                mDatabaseHelper.getDataForDelete();
+
+                System.out.println(Background.ids);
+                System.out.println(LVSaves.getItemAtPosition(position).toString().trim());
+                mDatabaseHelper.getDataForDelete(LVSaves.getItemAtPosition(position).toString().trim());
             }
         });
 
