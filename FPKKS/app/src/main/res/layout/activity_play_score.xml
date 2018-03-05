@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context="ch.fp.fp_kks.PlayScoreActivity">
 
+    <com.github.mikephil.charting.charts.PieChart
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/idPieChart"></com.github.mikephil.charting.charts.PieChart>
+
     <ImageView
         android:id="@+id/imageView9"
         android:layout_width="match_parent"
