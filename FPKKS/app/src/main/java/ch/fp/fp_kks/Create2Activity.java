@@ -52,17 +52,11 @@ public class Create2Activity extends AppCompatActivity {
                     populateListView();
                     etAncer.setText("");
                     etQuestion.setText("");
-
-
-<<<<<<< HEAD
                 }
-=======
                 mDatabaseHelper.addData(newEntry1, newEntry2, Background.ids);
-
                 etQuestion.setText("");
                 etAncer.setText("");
                 populateListView();
->>>>>>> 07dcfa5302492b000b41abd0077901d7d04f3c5d
             }
         });
 
