@@ -2,14 +2,15 @@ package ch.fp.fp_kks;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -42,11 +43,17 @@ public class Create2Activity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                newEntry1 = String.valueOf(etQuestion.getText());
-                newEntry2 = String.valueOf(etAncer.getText());
-
+                if(etQuestion.getText().equals("") || etAncer.getText().equals("")){
+                    Toast.makeText(Create2Activity.this, "Bitte definieren Sie eine Frage wie auch eine Antwort!", Toast.LENGTH_SHORT).show();
+                }else{
+                    newEntry1 = String.valueOf(etQuestion.getText());
+                    newEntry2 = String.valueOf(etAncer.getText());
+                    mDatabaseHelper.addData(newEntry1, newEntry2, Background.ids);
+                    populateListView();
+                    etAncer.setText("");
+                    etQuestion.setText("");
+                }
                 mDatabaseHelper.addData(newEntry1, newEntry2, Background.ids);
-
                 etQuestion.setText("");
                 etAncer.setText("");
                 populateListView();
@@ -60,6 +67,7 @@ public class Create2Activity extends AppCompatActivity {
                 if(!Background.text2) {
                     Intent intent = new Intent(Create2Activity.this, MainActivity.class);
                     startActivity(intent);
+
                 }else if(Background.text2){
                     Intent intent = new Intent(Create2Activity.this, EditActivity.class);
                     startActivity(intent);
