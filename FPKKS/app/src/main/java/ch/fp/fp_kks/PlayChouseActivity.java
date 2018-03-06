@@ -14,6 +14,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Chosing an Kategory from the Database
+ */
 public class PlayChouseActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     DatabaseHelper mDatabaseHelper;
@@ -58,6 +61,14 @@ public class PlayChouseActivity extends AppCompatActivity implements AdapterView
         spinner.setAdapter(dataAdapter);
     }
 
+    /**
+     * updating the Spinner
+     *
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     */
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         // On selecting a spinner item
@@ -66,6 +77,12 @@ public class PlayChouseActivity extends AppCompatActivity implements AdapterView
         // Showing selected spinner item
         Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
     }
+
+    /**
+     * if Nothing is Selected
+     *
+     * @param arg0
+     */
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub
     }
