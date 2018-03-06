@@ -14,6 +14,9 @@ import android.widget.Toast;
  * Created by garte on 26.02.2018.
  */
 
+/**
+ * FingerprintHandler for the Fingerprint interface
+ */
 public class FingerprintHandler extends FingerprintManager.AuthenticationCallback{
 
     private Context context;
@@ -32,18 +35,23 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
 
     }
 
+    /**
+     * if the Fingerprint was Correct
+     */
     @Override
     public void onAuthenticationFailed() {
         super.onAuthenticationFailed();
         Toast.makeText(context, "Fingerprint Authentification failed", Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * if the Fingerprint war Wrong
+     *
+     * @param result
+     */
     @Override
     public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result) {
         super.onAuthenticationSucceeded(result);
-
-        //Main.tvText.setVisibility(View.INVISIBLE);
-        //Main.ivPicture.setVisibility(View.INVISIBLE);
         context.startActivities(new Intent[]{new Intent(context, EditActivity.class)});
     }
 }

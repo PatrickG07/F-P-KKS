@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+/**
+ * Activity for changing the Text in the Database
+ */
 public class EditTextActivity extends AppCompatActivity {
 
     DatabaseHelper mDatabaseHelper;
@@ -45,12 +48,10 @@ public class EditTextActivity extends AppCompatActivity {
         Update();
     }
 
+    /**
+     * updating the Data in the database with the ID XXX
+     */
     private void Update(){
-
-
-        System.out.println("Text12345678dsalfsdlafjlsdajf6löasdjflöasjflasjdflökjas6dfölkj");
-
-
         Cursor data = mDatabaseHelper.getEditData(Background.ids);
 
         while (data.moveToNext()) {

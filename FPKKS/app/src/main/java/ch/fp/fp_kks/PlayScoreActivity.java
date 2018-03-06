@@ -15,6 +15,9 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Showing an PieChart for the correct and wrong ancers
+ */
 public class PlayScoreActivity extends AppCompatActivity {
 
     float rainfall[] ={Background.correct, Background.wrong};
@@ -38,6 +41,9 @@ public class PlayScoreActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * showing the PieChart
+     */
     private void setupPieChart() {
         List<PieEntry> pieEntries = new ArrayList<>();
         for(int i = 0; i <rainfall.length; i++){

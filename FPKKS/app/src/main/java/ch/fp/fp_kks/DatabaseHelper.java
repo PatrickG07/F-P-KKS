@@ -65,6 +65,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    /**
+     * Adding data to FragenAntworten Table with item1, item2 and FK
+     *
+     * @param item1
+     * @param item2
+     * @param KarteiFk
+     * @return
+     */
     public boolean addData(String item1, String item2, int KarteiFk) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -94,6 +102,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
+    /**
+     * Selects the Ancer and Questin from FrageAntwort where KarteienFk is XXX
+     *
+     * @param KarteienFk
+     * @return
+     */
     public Cursor getData(Integer KarteienFk) {
         SQLiteDatabase db = this.getWritableDatabase();
         data = db.rawQuery("SELECT Frage, Antwort FROM " + TABLE_NAME1 + " where KarteienFk = "+ KarteienFk, null);
@@ -101,7 +115,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * wriths data in the database
+     * wriths data in the database in Karteien
      *
      * @param item1;
      */

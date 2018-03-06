@@ -14,6 +14,10 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+/**
+ * Adding data to the Database with the FK from Create1Activity
+ *
+ */
 public class Create2Activity extends AppCompatActivity {
 
     String newEntry1, newEntry2;
@@ -24,11 +28,6 @@ public class Create2Activity extends AppCompatActivity {
 
     EditText etQuestion, etAncer;
 
-    /**
-     * Adding data to the Database with the FK from Create1Activity
-     *
-     * @param savedInstanceState
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

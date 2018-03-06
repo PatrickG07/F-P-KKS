@@ -8,17 +8,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+ * Adding a Kategory to the Database
+ */
 public class Create1Activity extends AppCompatActivity {
 
     DatabaseHelper mDatabaseHelper;
 
     String newEntry;
 
-    /**
-     * Adding a Kategory to the Database
-     *
-     * @param savedInstanceState
-     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
