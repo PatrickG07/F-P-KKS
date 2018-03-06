@@ -9,21 +9,21 @@ import android.util.Log;
 
 /**
  * the DatabaseHelper is a class for doing all things with a database
- *
+ * <p>
  * Created by Patrick on 24.08.2017.
  */
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TAG = "DatabaseHelper";
 
-    private static final String TABLE_NAME1 = "FrageAntwort";
+    private static final String TABLE_NAME1 = "QuestionAnswer";
     private static final String COL11 = "ID";
-    private static final String COL12 = "Frage";
-    private static final String COL13 = "Antwort";
-    private static final String COL14 = "KarteienFk";
+    private static final String COL12 = "Question";
+    private static final String COL13 = "Answer";
+    private static final String COL14 = "KategoryFk";
 
-    private static final String TABLE_NAME2 = "Karteien";
+    private static final String TABLE_NAME2 = "Kategory";
     private static final String COL21 = "ID";
-    private static final String COL22 = "Karteiname";
+    private static final String COL22 = "Name";
 
     Cursor data;
 
@@ -46,7 +46,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(createTable);
 
         createTable = "CREATE TABLE " + TABLE_NAME1 + " (ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
-                COL12 + " TEXT1, " + COL13 + " TEXT1, " + COL14 +" INTEGER, Foreign key(KarteienFk) references Karteien(id))";
+                COL12 + " TEXT1, " + COL13 + " TEXT1, " + COL14 + " INTEGER, Foreign key(" + COL14 + ") references " + TABLE_NAME2 + "(" + COL21 + "))";
         db.execSQL(createTable);
     }
 
@@ -80,7 +80,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL13, item2);
         contentValues.put(COL14, KarteiFk);
 
-        Log.d(TAG, "addData: Adding " + item1 + " and " + item2 + " and " + KarteiFk +" to " + TABLE_NAME1);
+        Log.d(TAG, "addData: Adding " + item1 + " and " + item2 + " and " + KarteiFk + " to " + TABLE_NAME1);
 
         long result = db.insert(TABLE_NAME1, null, contentValues);
 
@@ -94,7 +94,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     /**
      * givs all data from the database back
-     *
      */
     public Cursor getEditData(Integer ID) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -105,26 +104,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /**
      * Selects the Ancer and Questin from FrageAntwort where KarteienFk is XXX
      *
-     * @param KarteienFk
+     * @param KategoryFk
      * @return
      */
-    public Cursor getData(Integer KarteienFk) {
+    public Cursor getData(Integer KategoryFk) {
         SQLiteDatabase db = this.getWritableDatabase();
-        data = db.rawQuery("SELECT Frage, Antwort FROM " + TABLE_NAME1 + " where KarteienFk = "+ KarteienFk, null);
+        data = db.rawQuery("SELECT Frage, Antwort FROM " + TABLE_NAME1 + " where KarteienFk = " + KategoryFk, null);
         return data;
     }
 
     /**
      * wriths data in the database in Karteien
      *
-     * @param item1;
+     * @param text;
      */
-    public boolean addDataKartei(String item1) {
+    public boolean addDataKartei(String text) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL22, item1);
+        contentValues.put(COL22, text);
 
-        Log.d(TAG, "addData: Adding " + item1 +" to " + TABLE_NAME2);
+        Log.d(TAG, "addData: Adding " + text + " to " + TABLE_NAME2);
 
         long result = db.insert(TABLE_NAME2, null, contentValues);
 
@@ -147,7 +146,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor data = db.rawQuery("SELECT " + COL21 + " FROM " + TABLE_NAME2 + " WHERE " + COL22 + " = '" + Name + "'", null);
 
-        if(data != null) {
+        if (data != null) {
             data.moveToFirst();
         }
         Background.ids = data.getInt(0);
@@ -165,7 +164,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor data = db.rawQuery("SELECT " + COL11 + " FROM " + TABLE_NAME1 + " WHERE " + COL12 + " = '" + text + "'", null);
-        if(data != null) {
+        if (data != null) {
             data.moveToFirst();
         }
         Background.ids = data.getInt(0);
@@ -185,7 +184,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     /**
      * update a row with the new text
-     *
      */
     public void getUpdate(String text1, String text2, Integer ID) {
         SQLiteDatabase db = this.getWritableDatabase();

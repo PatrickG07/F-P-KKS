@@ -17,7 +17,7 @@ import android.widget.Toast;
 /**
  * FingerprintHandler for the Fingerprint interface
  */
-public class FingerprintHandler extends FingerprintManager.AuthenticationCallback{
+public class FingerprintHandler extends FingerprintManager.AuthenticationCallback {
 
     private Context context;
 
@@ -29,9 +29,9 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
 
     public void startAuthentication(FingerprintManager fingerprintManager, FingerprintManager.CryptoObject cryptoObject) {
         CancellationSignal canCellationSignal = new CancellationSignal();
-        if(ActivityCompat.checkSelfPermission(context, Manifest.permission.USE_FINGERPRINT) != PackageManager.PERMISSION_GRANTED)
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.USE_FINGERPRINT) != PackageManager.PERMISSION_GRANTED)
             return;
-        fingerprintManager.authenticate(cryptoObject,canCellationSignal,0,this,null);
+        fingerprintManager.authenticate(cryptoObject, canCellationSignal, 0, this, null);
 
     }
 

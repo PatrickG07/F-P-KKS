@@ -44,14 +44,14 @@ public class PlayGameActivity extends AppCompatActivity {
 
         tvQuestion = (TextView) findViewById(R.id.tvQuestion);
 
-        final EditText etAncer = (EditText) findViewById(R.id.etAncer);
+        final EditText etAnswer = (EditText) findViewById(R.id.etAncer);
 
         fabBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 id--;
 
-                etAncer.setText(result.get(id));
+                etAnswer.setText(result.get(id));
 
                 populateListView();
             }
@@ -71,9 +71,9 @@ public class PlayGameActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (id == id2) {
-                    result.add(etAncer.getText().toString());
+                    result.add(etAnswer.getText().toString());
                 } else {
-                    result.set(id, etAncer.getText().toString());
+                    result.set(id, etAnswer.getText().toString());
                 }
 
                 if (listData1.size() - 1 != id) {
@@ -89,7 +89,7 @@ public class PlayGameActivity extends AppCompatActivity {
                     fabBack.setVisibility(View.VISIBLE);
                 }
 
-                etAncer.setText("");
+                etAnswer.setText("");
 
                 populateListView();
             }
@@ -124,6 +124,6 @@ public class PlayGameActivity extends AppCompatActivity {
                 Background.wrong++;
             }
         }
-        System.out.println(Background.correct+"  "+Background.wrong);
+        System.out.println(Background.correct + "  " + Background.wrong);
     }
 }

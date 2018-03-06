@@ -16,12 +16,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Showing an PieChart for the correct and wrong ancers
+ * Showing an PieChart for the correct and wrong answers
  */
 public class PlayScoreActivity extends AppCompatActivity {
 
-    float rainfall[] ={Background.correct, Background.wrong};
-    String score[] ={"Richtig", "Falsch"};
+    float rainfall[] = {Background.correct, Background.wrong};
+    String score[] = {"Correct", "Wrong"};
 
 
     @Override
@@ -46,7 +46,7 @@ public class PlayScoreActivity extends AppCompatActivity {
      */
     private void setupPieChart() {
         List<PieEntry> pieEntries = new ArrayList<>();
-        for(int i = 0; i <rainfall.length; i++){
+        for (int i = 0; i < rainfall.length; i++) {
             pieEntries.add(new PieEntry(rainfall[i], score[i]));
         }
         PieDataSet dataSet = new PieDataSet(pieEntries, "");

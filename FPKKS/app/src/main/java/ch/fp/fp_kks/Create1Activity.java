@@ -17,7 +17,6 @@ public class Create1Activity extends AppCompatActivity {
 
     String newEntry;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,9 +31,9 @@ public class Create1Activity extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(etName.getText().toString().matches("")){
+                if (etName.getText().toString().matches("")) {
                     Toast.makeText(Create1Activity.this, "Definieren Sie einen Karteinamen!", Toast.LENGTH_SHORT).show();
-                }else{
+                } else {
                     newEntry = String.valueOf(etName.getText());
                     mDatabaseHelper.addDataKartei(newEntry);
                     mDatabaseHelper.getSavedKartei(newEntry);

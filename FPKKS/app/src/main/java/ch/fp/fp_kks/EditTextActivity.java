@@ -18,7 +18,7 @@ public class EditTextActivity extends AppCompatActivity {
 
     String newEntry1, newEntry2;
 
-    EditText etQuestion, etAncer;
+    EditText etQuestion, etAnswer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class EditTextActivity extends AppCompatActivity {
         mDatabaseHelper = new DatabaseHelper(this);
 
         etQuestion = (EditText) findViewById(R.id.etQuestion2);
-        etAncer = (EditText) findViewById(R.id.etAncer2);
+        etAnswer = (EditText) findViewById(R.id.etAncer2);
 
         Button btnDone = (Button) findViewById(R.id.btnDone2);
 
@@ -36,7 +36,7 @@ public class EditTextActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 newEntry1 = String.valueOf(etQuestion.getText());
-                newEntry2 = String.valueOf(etAncer.getText());
+                newEntry2 = String.valueOf(etAnswer.getText());
 
                 mDatabaseHelper.getUpdate(newEntry1, newEntry1, Background.ids);
 
@@ -51,12 +51,12 @@ public class EditTextActivity extends AppCompatActivity {
     /**
      * updating the Data in the database with the ID XXX
      */
-    private void Update(){
+    private void Update() {
         Cursor data = mDatabaseHelper.getEditData(Background.ids);
 
         while (data.moveToNext()) {
             etQuestion.setText(data.getString(1));
-            etAncer.setText(data.getString(2));
+            etAnswer.setText(data.getString(2));
         }
     }
 }

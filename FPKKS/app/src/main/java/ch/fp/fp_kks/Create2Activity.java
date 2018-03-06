@@ -16,7 +16,6 @@ import java.util.ArrayList;
 
 /**
  * Adding data to the Database with the FK from Create1Activity
- *
  */
 public class Create2Activity extends AppCompatActivity {
 
@@ -24,9 +23,9 @@ public class Create2Activity extends AppCompatActivity {
 
     DatabaseHelper mDatabaseHelper;
 
-    ListView lvQuestion, lvAncer;
+    ListView lvQuestion, lvAnswer;
 
-    EditText etQuestion, etAncer;
+    EditText etQuestion, etAnswer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,24 +38,24 @@ public class Create2Activity extends AppCompatActivity {
         Button btnDone = (Button) findViewById(R.id.btnDone);
 
         lvQuestion = (ListView) findViewById(R.id.lvQuestion);
-        lvAncer = (ListView) findViewById(R.id.lvAncer);
+        lvAnswer = (ListView) findViewById(R.id.lvAncer);
 
         etQuestion = (EditText) findViewById(R.id.etQuestion);
-        etAncer = (EditText) findViewById(R.id.etAncer);
+        etAnswer = (EditText) findViewById(R.id.etAncer);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String text1 = etQuestion.getText().toString();
-                String text2 = etAncer.getText().toString();
+                String text2 = etAnswer.getText().toString();
                 if (text1.matches("") || text2.matches("")) {
                     Toast.makeText(Create2Activity.this, "Bitte definieren Sie eine Frage wie auch eine Antwort!", Toast.LENGTH_SHORT).show();
                 } else {
                     newEntry1 = String.valueOf(etQuestion.getText());
-                    newEntry2 = String.valueOf(etAncer.getText());
+                    newEntry2 = String.valueOf(etAnswer.getText());
                     mDatabaseHelper.addData(newEntry1, newEntry2, Background.ids);
                     populateListView();
-                    etAncer.setText("");
+                    etAnswer.setText("");
                     etQuestion.setText("");
                 }
             }
@@ -97,6 +96,6 @@ public class Create2Activity extends AppCompatActivity {
         lvQuestion.setAdapter(adapter1);
 
         ListAdapter adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData2);
-        lvAncer.setAdapter(adapter2);
+        lvAnswer.setAdapter(adapter2);
     }
 }

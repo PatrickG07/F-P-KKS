@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Chosing an Kategory from the Database
  */
-public class PlayChouseActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class PlayChouseActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     DatabaseHelper mDatabaseHelper;
 
