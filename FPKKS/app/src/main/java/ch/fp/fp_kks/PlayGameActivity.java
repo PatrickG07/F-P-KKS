@@ -51,6 +51,8 @@ public class PlayGameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 id--;
 
+                etAncer.setText(result.get(id));
+
                 populateListView();
             }
         });
