@@ -18,6 +18,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Activity for editing the Database entitis
+ */
 public class EditActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     DatabaseHelper mDatabaseHelper;
