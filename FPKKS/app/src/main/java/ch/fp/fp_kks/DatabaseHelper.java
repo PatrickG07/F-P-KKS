@@ -122,6 +122,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    /**
+     * get the ID where the Karteiname is XXX
+     *
+     * @param Name
+     * @return
+     */
     public Cursor getSavedKartei(String Name) {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -134,6 +140,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
+    /**
+     * gets the ID where the Text is XXX
+     *
+     * @param text
+     * @return
+     */
     public Cursor getDataForDelete(String text) {
         System.out.println(text);
 
@@ -146,6 +158,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
+    /**
+     * gets all Karteien
+     *
+     * @return
+     */
     public Cursor getKarteien() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME2, null);
@@ -175,6 +192,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    /**
+     * deletes an Kategory
+     *
+     * @param ID
+     */
     public void deleteKartei(Integer ID) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE FROM " + TABLE_NAME2 + " WHERE " + COL21 + " = " + ID);
@@ -182,6 +204,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         deleteFKs(ID);
     }
 
+    /**
+     * deletes all data with the FK
+     *
+     * @param ID
+     */
     public void deleteFKs(Integer ID) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE FROM " + TABLE_NAME1 + " WHERE " + COL14 + " = " + ID);

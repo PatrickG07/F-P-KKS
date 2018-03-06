@@ -14,7 +14,7 @@ import java.util.List;
 
 public class PlayScoreActivity extends AppCompatActivity {
 
-    float rainfall[] ={24.0f, 76.0f};
+    float rainfall[] ={Background.correct, Background.wrong};
     String score[] ={"Richtig", "Falsch"};
 
     @Override

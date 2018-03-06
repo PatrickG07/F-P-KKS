@@ -8,7 +8,7 @@ import android.support.annotation.Nullable;
 import android.widget.Toast;
 
 /**
- * Background for using int ids and String text in every class
+ * Background for using int ids, Boolean text, Boolean kategroy, int correct and int wrong in every class
  * <p>
  * Created by Patrick on 24.08.2017.
  */

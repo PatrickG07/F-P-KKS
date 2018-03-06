@@ -24,6 +24,11 @@ public class Create2Activity extends AppCompatActivity {
 
     EditText etQuestion, etAncer;
 
+    /**
+     * Adding data to the Database with the FK from Create1Activity
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +81,9 @@ public class Create2Activity extends AppCompatActivity {
         populateListView();
     }
 
+    /**
+     * Showing all data with that Kategory in ListViews
+     */
     private void populateListView() {
         Cursor data1 = mDatabaseHelper.getData(Background.ids);
         ArrayList<String> listData1 = new ArrayList<>();

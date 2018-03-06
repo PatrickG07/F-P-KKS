@@ -62,8 +62,12 @@ public class PlayGameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Finish();
 
+                System.out.println(Background.correct+"  "+Background.wrong);
+
                 Intent intent = new Intent(PlayGameActivity.this, PlayScoreActivity.class);
                 startActivity(intent);
+
+                System.out.println(Background.correct+"  "+Background.wrong);
             }
         });
 
@@ -125,5 +129,6 @@ public class PlayGameActivity extends AppCompatActivity {
                 Background.wrong++;
             }
         }
+        System.out.println(Background.correct+"  "+Background.wrong);
     }
 }

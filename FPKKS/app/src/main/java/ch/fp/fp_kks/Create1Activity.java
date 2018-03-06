@@ -14,6 +14,11 @@ public class Create1Activity extends AppCompatActivity {
 
     String newEntry;
 
+    /**
+     * Adding a Kategory to the Database
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,9 +47,5 @@ public class Create1Activity extends AppCompatActivity {
 
             }
         });
-    }
-
-    public void ceck(){
-
     }
 }
