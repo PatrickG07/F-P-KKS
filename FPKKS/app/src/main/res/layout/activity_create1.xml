@@ -57,7 +57,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="100dp"
         android:background="#5a0d0d"
-        android:text="Weiter"
+        android:text="Next"
         android:textColor="#fff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
