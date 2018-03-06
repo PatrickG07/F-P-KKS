@@ -107,6 +107,7 @@ public class EditActivity extends AppCompatActivity implements AdapterView.OnIte
 
         populateListView();
     }
+
     /**
      * for showing all database enetys
      */
@@ -126,16 +127,15 @@ public class EditActivity extends AppCompatActivity implements AdapterView.OnIte
      * for deleting the selected row in the database
      */
     private void onDelete() {
-        if(!Background.kategroy) {
+        if (!Background.kategroy) {
             mDatabaseHelper.deleteDate(Background.ids);
             Background.ids = 0;
             populateListView();
-        }else {
+        } else {
             mDatabaseHelper.deleteKartei(Background.ids);
             Intent intent = new Intent(EditActivity.this, EditActivity.class);
             startActivity(intent);
         }
-
     }
 
     /**
