@@ -46,7 +46,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(createTable);
 
         createTable = "CREATE TABLE " + TABLE_NAME1 + " (ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
-                COL12 + " TEXT1, " + COL13 + " TEXT1, " + COL14 + " INTEGER, Foreign key(" + COL14 + ") references " + TABLE_NAME2 + "(" + COL21 + "))";
+                COL12 + " TEXT1, " + COL13 + " TEXT1, " + COL14 + " INTEGER, Foreign key(KategoryFk) references Kategory(ID))";
         db.execSQL(createTable);
     }
 
@@ -102,14 +102,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Selects the Ancer and Questin from FrageAntwort where KarteienFk is XXX
+     * Selects the Ancer and Question from FrageAntwort where KarteienFk is XXX
      *
      * @param KategoryFk
      * @return
      */
     public Cursor getData(Integer KategoryFk) {
         SQLiteDatabase db = this.getWritableDatabase();
-        data = db.rawQuery("SELECT Frage, Antwort FROM " + TABLE_NAME1 + " where KarteienFk = " + KategoryFk, null);
+        data = db.rawQuery("SELECT Question, Answer FROM " + TABLE_NAME1 + " where KategoryFk = " + KategoryFk, null);
         return data;
     }
 

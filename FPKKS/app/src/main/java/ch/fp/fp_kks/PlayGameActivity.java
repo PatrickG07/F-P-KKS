@@ -49,7 +49,7 @@ public class PlayGameActivity extends AppCompatActivity {
         fabBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                id--;
+                --id;
 
                 etAnswer.setText(result.get(id));
 
@@ -78,9 +78,9 @@ public class PlayGameActivity extends AppCompatActivity {
 
                 if (listData1.size() - 1 != id) {
                     if (id == id2) {
-                        id2++;
+                        ++id2;
                     }
-                    id++;
+                    ++id;
                 } else {
                     fabDone.setVisibility(View.VISIBLE);
                 }
