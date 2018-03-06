@@ -37,11 +37,14 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 
+/**
+ * Main Activity
+ */
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    TextView tvText;
-    ImageView ivPicture;
+    TextView tvText, tvText2;
+    ImageView ivPicture, ivPicture2;
 
     private KeyStore keyStore;
     private static final String KEY_NAME = "EDMTDev";
@@ -55,6 +58,8 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         tvText = (TextView) findViewById(R.id.tvText);
         ivPicture = (ImageView) findViewById(R.id.ivPicture);
+        tvText2 = (TextView) findViewById(R.id.tvText2);
+        ivPicture2 = (ImageView) findViewById(R.id.ivPicture2);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -98,6 +103,12 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * if an item in the Navigation Was Pressed
+     *
+     * @param item
+     * @return
+     */
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -114,6 +125,9 @@ public class MainActivity extends AppCompatActivity
 
             ivPicture.setVisibility(View.VISIBLE);
             tvText.setVisibility(View.VISIBLE);
+
+            ivPicture2.setVisibility(View.INVISIBLE);
+            tvText2.setVisibility(View.INVISIBLE);
 
             KeyguardManager keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
             FingerprintManager fingerprintManager = (FingerprintManager) getSystemService(FINGERPRINT_SERVICE);
@@ -147,6 +161,11 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    /**
+     * gets the Finger
+     *
+     * @return
+     */
     private boolean cipherInt() {
         try {
             cipher = Cipher.getInstance(KeyProperties.KEY_ALGORITHM_AES + "/" + KeyProperties.BLOCK_MODE_CBC + "/" + KeyProperties.ENCRYPTION_PADDING_PKCS7);
@@ -181,6 +200,9 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * gets the saved Fingerprint and checks the Finger
+     */
     private void genKey() {
         try {
             keyStore = KeyStore.getInstance("AndroidKeyStore");

@@ -43,6 +43,7 @@
         android:text="Autenification"
         android:textAlignment="center"
         android:textSize="32sp"
+        android:textColor="#fff"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
@@ -50,12 +51,13 @@
         app:layout_constraintTop_toBottomOf="@+id/ivPicture" />
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/ivPicture2"
         android:layout_width="203dp"
         android:layout_height="201dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="116dp"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,17 +65,18 @@
         app:srcCompat="@mipmap/ic_launcher_round" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/tvText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="56dp"
         android:text="F&amp;P-KKS"
         android:textColor="#fff"
         android:textSize="30dp"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+        app:layout_constraintTop_toBottomOf="@+id/ivPicture2" />
 </android.support.constraint.ConstraintLayout>
