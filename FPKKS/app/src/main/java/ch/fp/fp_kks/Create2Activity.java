@@ -43,9 +43,11 @@ public class Create2Activity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(etQuestion.getText().equals("") || etAncer.getText().equals("")){
+                String text1 = etQuestion.getText().toString();
+                String text2 = etAncer.getText().toString();
+                if (text1.matches("") || text2.matches("")) {
                     Toast.makeText(Create2Activity.this, "Bitte definieren Sie eine Frage wie auch eine Antwort!", Toast.LENGTH_SHORT).show();
-                }else{
+                } else {
                     newEntry1 = String.valueOf(etQuestion.getText());
                     newEntry2 = String.valueOf(etAncer.getText());
                     mDatabaseHelper.addData(newEntry1, newEntry2, Background.ids);
@@ -53,10 +55,6 @@ public class Create2Activity extends AppCompatActivity {
                     etAncer.setText("");
                     etQuestion.setText("");
                 }
-                mDatabaseHelper.addData(newEntry1, newEntry2, Background.ids);
-                etQuestion.setText("");
-                etAncer.setText("");
-                populateListView();
             }
         });
 
@@ -64,11 +62,11 @@ public class Create2Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 System.out.println(Background.text2);
-                if(!Background.text2) {
+                if (!Background.text2) {
                     Intent intent = new Intent(Create2Activity.this, MainActivity.class);
                     startActivity(intent);
 
-                }else if(Background.text2){
+                } else if (Background.text2) {
                     Intent intent = new Intent(Create2Activity.this, EditActivity.class);
                     startActivity(intent);
                 }

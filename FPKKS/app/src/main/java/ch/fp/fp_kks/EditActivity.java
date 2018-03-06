@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.BaseKeyListener;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -77,6 +78,8 @@ public class EditActivity extends AppCompatActivity implements AdapterView.OnIte
         LVSaves.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 mDatabaseHelper.getDataForDelete(LVSaves.getItemAtPosition(position).toString().trim());
+
+                Background.kategroy = false;
             }
         });
 
@@ -104,6 +107,7 @@ public class EditActivity extends AppCompatActivity implements AdapterView.OnIte
 
         populateListView();
     }
+
     /**
      * for showing all database enetys
      */
@@ -123,9 +127,15 @@ public class EditActivity extends AppCompatActivity implements AdapterView.OnIte
      * for deleting the selected row in the database
      */
     private void onDelete() {
-        mDatabaseHelper.deleteDate(Background.ids);
-        Background.ids = 0;
-        populateListView();
+        if (!Background.kategroy) {
+            mDatabaseHelper.deleteDate(Background.ids);
+            Background.ids = 0;
+            populateListView();
+        } else {
+            mDatabaseHelper.deleteKartei(Background.ids);
+            Intent intent = new Intent(EditActivity.this, EditActivity.class);
+            startActivity(intent);
+        }
     }
 
     /**
@@ -143,6 +153,10 @@ public class EditActivity extends AppCompatActivity implements AdapterView.OnIte
 
         // Showing selected spinner item
         Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+
+        System.out.println(Background.ids);
+
+        Background.kategroy = true;
 
         populateListView();
     }

@@ -28,7 +28,7 @@ public class Create1Activity extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(etName.getText().equals("")){
+                if(etName.getText().toString().matches("")){
                     Toast.makeText(Create1Activity.this, "Definieren Sie einen Karteinamen!", Toast.LENGTH_SHORT).show();
                 }else{
                     newEntry = String.valueOf(etName.getText());

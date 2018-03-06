@@ -16,6 +16,7 @@ public class Background extends Service {
 
     static int ids = 1;
     static Boolean text2 = false;
+    static Boolean kategroy = false;
 
     static int correct = 0, wrong = 0;
 
