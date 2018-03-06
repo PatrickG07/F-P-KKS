@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Create1Activity extends AppCompatActivity {
 
@@ -27,15 +28,23 @@ public class Create1Activity extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(etName.getText().equals("")){
+                    Toast.makeText(Create1Activity.this, "Definieren Sie einen Karteinamen!", Toast.LENGTH_SHORT).show();
+                }else{
+                    newEntry = String.valueOf(etName.getText());
+                    mDatabaseHelper.addDataKartei(newEntry);
+                    mDatabaseHelper.getSavedKartei(newEntry);
 
-                newEntry = String.valueOf(etName.getText());
-                mDatabaseHelper.addDataKartei(newEntry);
-                mDatabaseHelper.getSavedKartei(newEntry);
+                    Background.text2 = false;
+                    Intent intent = new Intent(Create1Activity.this, Create2Activity.class);
+                    startActivity(intent);
+                }
 
-                Background.text2 = false;
-                Intent intent = new Intent(Create1Activity.this, Create2Activity.class);
-                startActivity(intent);
             }
         });
+    }
+
+    public void ceck(){
+
     }
 }
