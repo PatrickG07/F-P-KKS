@@ -174,4 +174,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DELETE FROM " + TABLE_NAME1 + " WHERE " + COL11 + " = " + ID);
         db.close();
     }
+
+    public void deleteKartei(Integer ID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM " + TABLE_NAME2 + " WHERE " + COL21 + " = " + ID);
+        db.close();
+        deleteFKs(ID);
+    }
+
+    public void deleteFKs(Integer ID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM " + TABLE_NAME1 + " WHERE " + COL14 + " = " + ID);
+        db.close();
+    }
 }
