@@ -27,7 +27,8 @@
         <activity android:name=".Create2Activity" />
         <activity android:name=".PlayGameActivity" />
         <activity android:name=".EditTextActivity" />
-        <activity android:name=".PlayScoreActivity"></activity>
+        <activity android:name=".PlayScoreActivity" />
+        <activity android:name=".InfoActivity"></activity>
     </application>
 
 </manifest>
