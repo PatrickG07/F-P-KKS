@@ -46,6 +46,9 @@ public class Create2Activity extends AppCompatActivity {
                 newEntry2 = String.valueOf(etAncer.getText());
 
                 mDatabaseHelper.addData(newEntry1, newEntry2, Background.ids);
+
+                etQuestion.setText("");
+                etAncer.setText("");
                 populateListView();
             }
         });
