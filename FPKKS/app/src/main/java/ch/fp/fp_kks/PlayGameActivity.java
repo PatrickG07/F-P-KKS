@@ -88,6 +88,8 @@ public class PlayGameActivity extends AppCompatActivity {
                     fabBack.setVisibility(View.VISIBLE);
                 }
 
+                etAncer.setText("");
+
                 populateListView();
             }
         });
