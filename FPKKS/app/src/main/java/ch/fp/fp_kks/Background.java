@@ -7,6 +7,8 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 /**
  * Background for using int ids, Boolean text, Boolean kategroy, int correct and int wrong in every class
  * <p>
@@ -19,6 +21,8 @@ public class Background extends Service {
     static Boolean kategroy = false;
 
     static int correct = 0, wrong = 0;
+
+    public static ArrayList<String> result = new ArrayList<>();
 
     /**
      * @param intent;

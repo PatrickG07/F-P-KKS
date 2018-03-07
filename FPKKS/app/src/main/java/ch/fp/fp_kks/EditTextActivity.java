@@ -38,7 +38,7 @@ public class EditTextActivity extends AppCompatActivity {
                 newEntry1 = String.valueOf(etQuestion.getText());
                 newEntry2 = String.valueOf(etAnswer.getText());
 
-                mDatabaseHelper.getUpdate(newEntry1, newEntry1, Background.ids);
+                mDatabaseHelper.getUpdate(newEntry1, newEntry2, Background.ids);
 
                 Intent intent = new Intent(EditTextActivity.this, EditActivity.class);
                 startActivity(intent);

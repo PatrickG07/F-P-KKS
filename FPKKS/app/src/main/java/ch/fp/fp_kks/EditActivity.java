@@ -25,7 +25,7 @@ public class EditActivity extends AppCompatActivity implements AdapterView.OnIte
 
     DatabaseHelper mDatabaseHelper;
 
-    private ListView LVSaves;
+    private ListView lvSaves;
 
     private Spinner spinner;
 
@@ -76,11 +76,11 @@ public class EditActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
 
-        LVSaves = (ListView) findViewById(R.id.lvAncer);
+        lvSaves = (ListView) findViewById(R.id.lvAncer);
 
-        LVSaves.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        lvSaves.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                mDatabaseHelper.getDataForDelete(LVSaves.getItemAtPosition(position).toString().trim());
+                mDatabaseHelper.getDataForDelete(lvSaves.getItemAtPosition(position).toString().trim());
 
                 Background.kategroy = false;
             }
@@ -123,7 +123,7 @@ public class EditActivity extends AppCompatActivity implements AdapterView.OnIte
             listData1.add(Text);
         }
         ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData1);
-        LVSaves.setAdapter(adapter);
+        lvSaves.setAdapter(adapter);
     }
 
     /**
