@@ -125,5 +125,6 @@ public class PlayGameActivity extends AppCompatActivity {
             }
         }
         System.out.println(Background.correct + "  " + Background.wrong);
+        Background.result = result;
     }
 }
