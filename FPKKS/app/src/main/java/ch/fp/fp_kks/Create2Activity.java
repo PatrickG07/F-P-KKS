@@ -27,6 +27,8 @@ public class Create2Activity extends AppCompatActivity {
 
     EditText etQuestion, etAnswer;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

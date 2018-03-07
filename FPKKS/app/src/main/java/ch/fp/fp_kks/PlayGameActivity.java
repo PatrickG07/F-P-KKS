@@ -50,7 +50,7 @@ public class PlayGameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(id > 0) {
-                    --id;
+                    id--;
 
                     etAnswer.setText(result.get(id));
 
@@ -80,9 +80,9 @@ public class PlayGameActivity extends AppCompatActivity {
 
                 if (listData1.size() - 1 != id) {
                     if (id == id2) {
-                        ++id2;
+                        id2++;
                     }
-                    ++id;
+                    id++;
                     etAnswer.setText("");
                 } else {
                     fabDone.setVisibility(View.VISIBLE);
