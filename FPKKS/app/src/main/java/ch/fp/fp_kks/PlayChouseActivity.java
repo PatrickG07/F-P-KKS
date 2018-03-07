@@ -21,6 +21,10 @@ public class PlayChouseActivity extends AppCompatActivity implements AdapterView
 
     DatabaseHelper mDatabaseHelper;
 
+    Spinner spinner;
+
+    private ArrayAdapter<String> dataAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +42,7 @@ public class PlayChouseActivity extends AppCompatActivity implements AdapterView
             }
         });
 
-        Spinner spinner = (Spinner) findViewById(R.id.sSpinner);
+        spinner = (Spinner) findViewById(R.id.sSpinner);
 
         // Spinner click listener
         spinner.setOnItemSelectedListener(this);
@@ -52,13 +56,16 @@ public class PlayChouseActivity extends AppCompatActivity implements AdapterView
             categories.add(Text);
         }
 
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+        dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
 
         // Drop down layout style - list view with radio button
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         // attaching data adapter to spinner
         spinner.setAdapter(dataAdapter);
+
+        populateListView();
+
     }
 
     /**
@@ -76,6 +83,8 @@ public class PlayChouseActivity extends AppCompatActivity implements AdapterView
 
         // Showing selected spinner item
         Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+
+        System.out.println(Background.ids);
     }
 
     /**
@@ -85,5 +94,9 @@ public class PlayChouseActivity extends AppCompatActivity implements AdapterView
      */
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub
+    }
+
+    private void populateListView() {
+        mDatabaseHelper.getSavedKartei(spinner.getSelectedItem().toString());
     }
 }

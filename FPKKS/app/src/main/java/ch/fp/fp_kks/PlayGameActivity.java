@@ -49,11 +49,13 @@ public class PlayGameActivity extends AppCompatActivity {
         fabBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                --id;
+                if(id > 0) {
+                    --id;
 
-                etAnswer.setText(result.get(id));
+                    etAnswer.setText(result.get(id));
 
-                populateListView();
+                    populateListView();
+                }
             }
         });
 
@@ -81,15 +83,15 @@ public class PlayGameActivity extends AppCompatActivity {
                         ++id2;
                     }
                     ++id;
+                    etAnswer.setText("");
                 } else {
                     fabDone.setVisibility(View.VISIBLE);
+                    etAnswer.setText(result.get(id));
                 }
 
                 if (id > 0) {
                     fabBack.setVisibility(View.VISIBLE);
                 }
-
-                etAnswer.setText("");
 
                 populateListView();
             }
