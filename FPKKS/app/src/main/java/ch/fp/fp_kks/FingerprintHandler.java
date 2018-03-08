@@ -21,8 +21,6 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
 
     private Context context;
 
-    MainActivity Main = new MainActivity();
-
     public FingerprintHandler(Context context) {
         this.context = context;
     }
@@ -32,7 +30,6 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.USE_FINGERPRINT) != PackageManager.PERMISSION_GRANTED)
             return;
         fingerprintManager.authenticate(cryptoObject, canCellationSignal, 0, this, null);
-
     }
 
     /**
